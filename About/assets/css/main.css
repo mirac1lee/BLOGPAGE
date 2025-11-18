@@ -2,13 +2,87 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #242424;
 }
-.navbar{
-    width: auto;
-    font-weight: 700;
-    font-size: 13px;
-    position: sticky;
-    z-index: 999;
-    top: 0;
+:root {
+    --bgcolor: rgb(44, 42, 42);
+    --text-color: rgb(244, 242, 242);
+    --spacial-color: rgb(255, 98, 0);
+}
+nav {
+    font-family: "Jost", sans-serif;
+    height: 60px;
+    background-color: var(--bgcolor);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.links-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+nav a{
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+}
+nav a:hover {
+    background-color: var(--spacial-colar);
+}
+nav .home-link {
+    margin-right: auto;
+}
+#sidebar-active {
+    display: none;
+}
+.open-sidebar-button, .close-sidebar-button {
+    display: none;
+}
+.material-symbols-outlined {
+    color: var(--text-color);
+}
+@media(max-width: 769px){
+    .links-container{
+        flex-direction: column;
+        align-items: flex-start;
+
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        width: 300px;
+
+        background-color: var(--bgcolor);
+        box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+        transition: 0.75s ease-out;
+    }
+    nav a{
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
+        padding: 20px 30px;
+        justify-content: flex-start;
+    }
+    .open-sidebar-button, .close-sidebar-button {
+        padding: 20px;
+        display: block; 
+    }
+    #sidebar-active:checked ~ .links-container{
+        right: 0;
+    }
+    #sidebar-active:checked ~ #overlay{
+        background-color: var(--spacial-color);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
 }
 .btn{
     background-color: #E85E28;
@@ -22,9 +96,6 @@ body {
     background-image: none;
     color: white;
     background-color: black !important ; 
-}
-.navbar-nav{
-    margin-left: 70%;    
 }
  .card{ 
   background-color: #242424;
@@ -70,7 +141,7 @@ h4{
   position: relative;
   background: #1b1b1b;
   padding: 80px 20px;
-  overflow: hidden; /* <--- Taşmayı tamamen engeller */
+  overflow: hidden;
 }
 
 .bg-text {
@@ -78,10 +149,10 @@ h4{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(80px, 20vw, 220px); /* <--- Responsive dev yazı */
+  font-size: clamp(80px, 20vw, 220px);
   font-weight: 800;
   color: transparent;
-  -webkit-text-stroke: 2px #2c2c2c; /* çerçeve efekti */
+  -webkit-text-stroke: 2px #2c2c2c;
   white-space: nowrap;
   pointer-events: none;
 }
